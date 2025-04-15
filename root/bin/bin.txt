@@ -1,0 +1,1 @@
+This is the bin folder where some extension executalbeles will be put
