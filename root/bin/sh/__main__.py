@@ -4,7 +4,7 @@ import subprocess
 
 def simple_shell():
     """A simple terminal shell."""
-    que=input("do you want debug mode on(shows the tokens after you input) y/n ")
+    
     while True:
         try:
             # Get the current working directory
@@ -22,14 +22,9 @@ def simple_shell():
 
             # Split the command into arguments
             args = command.split()
-            if que == "y":
-                print(args)
-            elif que == "n":
-                continue
-            else:
-                continue
+            print(args)
             # Handle cd cpmmands
-            if command_name == "cd":
+            if args[0] == "cd":
                 if len(args) > 1:
                     target_path = args[1]
                     try:
@@ -48,15 +43,24 @@ def simple_shell():
                     except OSError as e:
                         print(f"Error changing to home directory: {e}")
                 continue  # Skip the subprocess execution for cd
-            # Execute the command using subprocess
+
+            elif args[0] == "about":
+                print("(C) Valente Vescio")
+                print("Welcome to the MOS shell here is a really small techinacly os running on your computer")
+                print("MOS was made when I wanted to make a way that someone could experiment with  things,code, or just have fun")
+                print("MOS was not and will not be made as a true os there is no kernel no bootloader just a shell some programs and thats it")#created about commamnd
+
+                # Execute the command using subprocess
             process = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
             stdout, stderr = process.communicate()
 
             # Decode and print the output
             if stdout:
-                print(stdout.decode())
+                out = stdout.decode()
+                print(out)
             if stderr:
-                print(stderr.decode())
+                err = stderr.decode()
+                print(err)
 
         except FileNotFoundError:
             print("Command not found.")
