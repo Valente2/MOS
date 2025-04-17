@@ -1,22 +1,23 @@
 #include <stdio.h>
 #include <math.h> 
-int check(int x){
-  if(x == int
 
 int main(int argc, char *argv[])
 {
+  int num;
   switch(argc)
   {
-     case 4;
-     int num[] = {argv[2], argv[4]};
-     char opr = argv[3];
-     break;
-  }
+    case 4:
+      int num[] = (int) {argv[2], argv[4]};
+      break;
 
-  switch(opr){
-     case "+";
-     printf("%d"
-    
-       
-     
+    case 6:
+      int num[] = (int) {argv[2], argv[4], argv[6]};
+      break;
+
+    case 2:
+      int num[] = (int) argv[2];
+      break;  
+  }
+  printf(num[]);
+  return 0;
 }
