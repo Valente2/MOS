@@ -92,3 +92,5 @@ def simple_shell():
 
 if __name__ == "__main__":
     simple_shell()
+
+#"Father into your hands I commnend my sprit" Pslam 31.6
