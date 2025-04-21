@@ -1,15 +1,17 @@
 
+
 import os
 import subprocess
 
 def simple_shell():
     """A simple terminal shell."""
     
+    
     while True:
         try:
             # Get the current working directory
             cwd = os.getcwd()
-            # Prompt the user
+            # Display the prompt with the current working directory
             command = input(f"{cwd}$ ")
 
             # Handle exit command
@@ -49,19 +51,40 @@ def simple_shell():
                 print("Welcome to the MOS shell here is a really small techinacly os running on your computer")
                 print("MOS was made when I wanted to make a way that someone could experiment with  things,code, or just have fun")
                 print("MOS was not and will not be made as a true os there is no kernel no bootloader just a shell some programs and thats it")#created about commamnd
-
-                # Execute the command using subprocess
-            process = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
-            stdout, stderr = process.communicate()
-
-            # Decode and print the output
-            if stdout:
-                out = stdout.decode()
-                print(out)
-            if stderr:
-                err = stderr.decode()
-                print(err)
-
+                continue
+            elif args[0] == "oiia":
+                for i in range(int(args[1])):
+                    print("oiiai", end = "")
+                    i += 1
+                continue
+            else:
+                # Execute the command using subprocess without capturing output
+                try:
+                    process = subprocess.Popen(args)
+                    process.wait() # Wait for the process to complete
+                except FileNotFoundError:
+                    print("Command not found.")
+                except Exception as e:
+                    print(f"An error occurred: {e}")
+        except KeyboardInterrupt:
+            print("\nExiting shell.")
+            break
+        except EOFError:   
+            print("\nExiting shell.")
+            break
+        except OSError as e:
+            if e.errno == os.errno.ENOENT:
+                print("Command not found.")
+            else:
+                print(f"An error occurred: {e}")
+        except ValueError:  
+            print("Invalid command.")
+        except subprocess.CalledProcessError as e:  
+            print(f"Command '{e.cmd}' failed with return code {e.returncode}.")
+        except PermissionError:             
+            print("Permission denied.")
+        except NotADirectoryError:
+            print("Not a directory.")
         except FileNotFoundError:
             print("Command not found.")
         except Exception as e:
