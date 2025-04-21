@@ -81,7 +81,7 @@ def simple_shell():
             print("Invalid command.")
         except subprocess.CalledProcessError as e:  
             print(f"Command '{e.cmd}' failed with return code {e.returncode}.")
-        except PermissionError:             
+        except PermissionError:            
             print("Permission denied.")
         except NotADirectoryError:
             print("Not a directory.")
@@ -93,4 +93,4 @@ def simple_shell():
 if __name__ == "__main__":
     simple_shell()
 
-#"Father into your hands I commnend my sprit" Pslam 31.6
+#22 46 61 74 68 65 72 2C 20 69 6E 74 6F 20 79 6F 75 72 20 68 61 6E 64 73 20 49 20 63 6F 6D 6D 65 6E 64 20 6D 79 20 73 70 72 69 74 22 20 70 73 61 6C 6D 20 33 31 2E 36
